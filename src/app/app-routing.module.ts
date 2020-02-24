@@ -8,8 +8,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 const routes: Routes = [
   { path: "", redirectTo: "books", pathMatch: "full" },
   { path: "books", component: BooksComponent },
+  { path: "edit", component: EditComponent, pathMatch: "full" },
   { path: "edit/:id", component: EditComponent },
-  { path: "edit/new", component: EditComponent },
   { path: "**", component: NotFoundComponent }
 ];
 

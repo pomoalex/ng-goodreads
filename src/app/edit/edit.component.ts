@@ -43,7 +43,7 @@ export class EditComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
-      if (this.id !== 'new') {
+      if (this.id) {
         this.bookService.fetchBook(this.id).subscribe(
           data => {
             this.currentBook = data;
