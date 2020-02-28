@@ -370,31 +370,16 @@
     </svg>
   </div>
 
-  <app-search-box (searchFired)="doSearch($event)"></app-search-box>
-
   <br />
 
-  <table
-    mat-table
+  <app-search-box
     style="width: 60%;"
-    [dataSource]="books | searchFilter: searchTitle"
-    class="mat-elevation-z8"
-  >
-    <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef>Title</th>
-      <td mat-cell *matCellDef="let element">{{ element.originalTitle }}</td>
-    </ng-container>
+    (searchFired)="doSearch($event)"
+  ></app-search-box>
 
-    <ng-container matColumnDef="picture">
-      <th mat-header-cell *matHeaderCellDef>Picture</th>
-      <td mat-cell *matCellDef="let element">
-        <img [alt]="element.originalTitle" [src]="element.smallImageUrl" />
-      </td>
-    </ng-container>
+  <app-book-table [books]="(books | searchFilter: searchTitle)" (deleteEvent)="deleteBook($event)"></app-book-table>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+  <br />
 
   <svg
     id="clouds"
